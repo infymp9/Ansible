@@ -1,0 +1,31 @@
+Ansible ssh 
+In Workstation create a user
+sudo useradd <UN>
+sudo su - username
+ls -al
+ssh-keygen   --> Give enter enter enter
+ls -al .ssh   --> Now we need to push ssh keys to remote/client machines.
+ssh root@servername useradd <UN>
+ssh root@servername echo password | passwd --stdin username   --> Remote to Client Multipla Argumets will not work
+ssh root@servername passwd --stdin username
+ssh-copy-id username@servername
+Sudo users : To Administrate remote system on behalf of root user, We can use sudo users (without root user password)
+Method ==> 1 : Add user to wheel group/sudoers group.
+useradd -G wheel <un> --> New user with sudo privilages
+usermod -aG wheel <un> --> if the user already exist
+To verify visudo (will open /etc/sudoers file)
+%wheel ALL=(ALL) NOPASSWD: ALL   % --> Group
+Method ==> 2 : --> Recommanded in Real Time
+echo "username ALL=(ALL) NOPASSWD: ALL" >/etc/sudoers.d/<un>
+chod 0400 /etc/sudoers.d/<un>   --> Here user can access the file others cant access
+
+vim filename.sh
+useradd <UN>
+echo password | passwd --stdin username
+echo "username ALL=(ALL) NOPASSWD: ALL" >/etc/sudoers.d/<un>
+chod 0400 /etc/sudoers.d/<un>
+
+scp filename.sh root@servername
+
+
+
