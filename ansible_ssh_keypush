@@ -23,7 +23,7 @@ vim filename.sh
 useradd <UN>
 echo password | passwd --stdin username
 echo "username ALL=(ALL) NOPASSWD: ALL" >/etc/sudoers.d/<un>
-chod 0400 /etc/sudoers.d/<un>
+chmod 0400 /etc/sudoers.d/<un>
 
 scp filename.sh root@servername
 
